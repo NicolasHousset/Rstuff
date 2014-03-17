@@ -9,6 +9,14 @@
 # 6. run install.packages('RMySQL',type='source') and wait while compilation will end
 # 7. happily go crash the database you want to connect to
 
+# change !
+# Those were the instructions for Windows. For Unix it is quite different.
+# The Renviron.site already exists on /etc/R/Renviron.site but it is protected.
+# Not being very fluent in Unix, I copied the file on the NAS, edited it adding the line MYSQL_HOME=/etc/MySQL, and SUDO CPed it.
+# Something that I forgot to mention, how to exploit the "group", you need to sudo CP a file under $HOME/.my.cnf with
+# all the parameters needed.
+# Little fun part, with R 3.0.3 they separated the host and the port, so it needs one more line in the .cnf file
+
 library(RMySQL);
 con <- dbConnect(MySQL(), group="MSDB", dbname="projects");
 
